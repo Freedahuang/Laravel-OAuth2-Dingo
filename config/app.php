@@ -144,6 +144,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\OAuthServiceProvider::class,
 
         //Oauth2
         LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
