@@ -315,7 +315,14 @@ return:
 no_access
 ```
 
-### failed (always)
+```
+file: config/app.php
+
+add App\Providers\OAuthServiceProvider::class, to providers array.
+
+```
+
+### success
 ```
 get: /my
 header:
@@ -323,28 +330,6 @@ Accept:application/vnd.laravel.v1+json
 Authorization:Bearer NRXfLpfH0AonXsyICKbwV3lFsGI2acIOmC5xm9tT
 
 return: 
-{
-  "message": "Failed to authenticate because of bad credentials or an invalid authorization header.",
-  "status_code": 401
- }
+oauth my success
 ```
 
-if i modify `config/api.php` `'auth'` to 
-
-```
-'auth' => [
-        'oauth'=> function($app) {
-            $provider = new Dingo\Api\Auth\Provider\OAuth2($app['oauth2-server.authorizer']->getChecker());
-
-            $provider->setUserResolver(function ($id) {
-                // Logic to return a user by their ID.
-            });
-
-            $provider->setClientResolver(function ($id) {
-                // Logic to return a client by their ID.
-            });
-
-            return $provider;
-        }
-    ],
-```
